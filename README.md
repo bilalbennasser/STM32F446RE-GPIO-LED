@@ -1,52 +1,62 @@
+
 # STM32F446RE — GPIO LED Control
 
 ## Description
+
 Ce projet présente une première application de programmation embarquée sur la carte NUCLEO-F446RE.
 
-L'objectif est de configurer et contrôler une LED en utilisant la bibliothèque STM32 HAL.
+L'objectif est de configurer et de contrôler la LED utilisateur LD2 à l'aide de la bibliothèque STM32 HAL.
 
-## Matériel
+## Matériel utilisé
+
 - Carte : NUCLEO-F446RE
 - Microcontrôleur : STM32F446RE
 - Processeur : ARM Cortex-M4
 - LED utilisateur : LD2 (PA5)
-- Programmateur : ST-LINK intégré
+- Programmateur / Débogueur : ST-LINK intégré
 
 ## Environnement de développement
-- Langage : C
+
+- Langage : Embedded C
 - STM32CubeIDE 2.2.0
 - STM32CubeMX
 - STM32 HAL
 - Git et GitHub
 
 ## Fonctionnement
-La fonction HAL_GPIO_TogglePin() permet d'inverser l'état de la LED LD2.
 
-La fonction HAL_Delay() permet de définir le temps entre deux changements d'état.
+Le programme utilise les fonctions suivantes :
 
-Exemple testé :
+- `HAL_GPIO_TogglePin()` : inverse l'état logique de la LED.
+- `HAL_Delay()` : introduit une temporisation bloquante.
+
+### Code testé
 
 ```c
 HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
 HAL_Delay(4000);
 ```
 
-Résultat :
-- LED allumée pendant environ 4 secondes
-- LED éteinte pendant environ 4 secondes
-- Répétition en boucle infinie
+### Résultat obtenu
+
+- LED allumée pendant environ 4 secondes.
+- LED éteinte pendant environ 4 secondes.
+- Répétition continue du cycle.
+
+La période complète est d'environ 8 secondes.
 
 ## Validation expérimentale
-Le programme a été compilé, transféré et exécuté sur une carte NUCLEO-F446RE réelle.
 
-Le fonctionnement de la LED a été vérifié avec succès.
+L'application a été compilée, programmée et déboguée avec succès sur une carte NUCLEO-F446RE réelle.
+
+Le clignotement de LD2 a été vérifié expérimentalement.
 
 ## Perspectives
-- Contrôle GPIO par accès direct aux registres
-- Étude des registres RCC, MODER et BSRR
-- Débogage et observation des registres
-- Gestion d'un bouton par interruption EXTI
 
+- Programmation GPIO par accès direct aux registres.
+- Étude des registres RCC, MODER, ODR et BSRR.
+- Observation des registres avec le débogueur.
+- Gestion du bouton utilisateur avec les interruptions EXTI.
 
 ## Auteur
 
@@ -54,63 +64,3 @@ Le fonctionnement de la LED a été vérifié avec succès.
 
 - [LinkedIn](https://www.linkedin.com/in/bilalbennasser/)
 - [GitHub](https://github.com/bilalbennasser)
-
-E0F
-cat > README.md <<'EOF'
-# STM32F446RE — GPIO LED Control
-
-## Description
-Ce projet présente une première application de programmation embarquée sur la carte NUCLEO-F446RE.
-
-L'objectif est de configurer et contrôler une LED en utilisant la bibliothèque STM32 HAL.
-
-## Matériel
-- Carte : NUCLEO-F446RE
-- Microcontrôleur : STM32F446RE
-- Processeur : ARM Cortex-M4
-- LED utilisateur : LD2 (PA5)
-- Programmateur : ST-LINK intégré
-
-## Environnement de développement
-- Langage : C
-- STM32CubeIDE 2.2.0
-- STM32CubeMX
-- STM32 HAL
-- Git et GitHub
-
-## Fonctionnement
-La fonction HAL_GPIO_TogglePin() permet d'inverser l'état de la LED LD2.
-
-La fonction HAL_Delay() permet de définir le temps entre deux changements d'état.
-
-Exemple testé :
-
-```c
-HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-HAL_Delay(4000);
-```
-
-Résultat :
-- LED allumée pendant environ 4 secondes
-- LED éteinte pendant environ 4 secondes
-- Répétition en boucle infinie
-
-## Validation expérimentale
-Le programme a été compilé, transféré et exécuté sur une carte NUCLEO-F446RE réelle.
-
-Le fonctionnement de la LED a été vérifié avec succès.
-
-## Perspectives
-- Contrôle GPIO par accès direct aux registres
-- Étude des registres RCC, MODER et BSRR
-- Débogage et observation des registres
-- Gestion d'un bouton par interruption EXTI
-
-
-## Auteur
-
-**Bilal Bennasser**
-
-- [LinkedIn](https://www.linkedin.com/in/bilalbennasser/)
-- [GitHub](https://github.com/bilalbennasser)
-
