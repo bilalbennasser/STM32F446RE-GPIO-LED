@@ -1,0 +1,12 @@
+# STM32CubeIDE - Build
+/Debug/
+/Release/
+/build/
+
+# Eclipse local settings
+/.settings/
+
+# Temporary files
+*.log
+*.tmp
+*.bak
