@@ -106,8 +106,15 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	   HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-	   HAL_Delay(4000);
+
+	  // Allumer la LED LD2
+	  GPIOA->BSRR = (1U << 5);
+	  HAL_Delay(4000);
+
+	  // Eteindre la LED LD2
+	  GPIOA->BSRR = (1U << 21);
+	  HAL_Delay(4000);
+
 
   }
   /* USER CODE END 3 */
