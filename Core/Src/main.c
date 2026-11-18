@@ -114,7 +114,7 @@ int main(void)
   /* USER CODE END 2 */
 
   /* Initialize leds */
-  BSP_LED_Init(LED2);
+ // BSP_LED_Init(LED2);
 
   /* Initialize USER push-button, will be used to trigger an interrupt each time it's pressed.*/
   BSP_PB_Init(BUTTON_USER, BUTTON_MODE_EXTI);
@@ -131,11 +131,11 @@ int main(void)
 
 	  // Allumer la LED LD2
 	  GPIOA->BSRR = (1U << 5);
-	  HAL_Delay(500);
+	  HAL_Delay(4000);
 
 	  // Eteindre la LED LD2
 	  GPIOA->BSRR = (1U << 21);
-	  HAL_Delay(500);
+	  HAL_Delay(4000);
 
 
   }
