@@ -89,6 +89,28 @@ int main(void)
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
+  // 1. Activer l'horloge de GPIOA
+  RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+  (void)RCC->AHB1ENR;
+
+  // 2. PA5 : état initial LOW
+  GPIOA->BSRR = (1U << 21);
+
+  // 3. PA5 : Push-Pull
+  GPIOA->OTYPER &= ~(1U << 5);
+
+  // 4. PA5 : Low Speed
+  GPIOA->OSPEEDR &= ~(3U << 10);
+
+  // 5. PA5 : No Pull-up / No Pull-down
+  GPIOA->PUPDR &= ~(3U << 10);
+
+  // 6. PA5 : Output Mode
+  GPIOA->MODER &= ~(3U << 10);
+  GPIOA->MODER |=  (1U << 10);
+
+
+
   /* USER CODE END 2 */
 
   /* Initialize leds */
@@ -109,11 +131,11 @@ int main(void)
 
 	  // Allumer la LED LD2
 	  GPIOA->BSRR = (1U << 5);
-	  HAL_Delay(4000);
+	  HAL_Delay(500);
 
 	  // Eteindre la LED LD2
 	  GPIOA->BSRR = (1U << 21);
-	  HAL_Delay(4000);
+	  HAL_Delay(500);
 
 
   }
